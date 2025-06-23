@@ -114,4 +114,12 @@ console.log(+true)                 /*1*/
 console.log(+"")                    /*0*/
 
 
+// comparison
 
+console.log("2">1)             /* true*/
+
+console.log("2"===2)           /* false due to strict comparison */
+
+console.log(null >= 0)         /* true because >= or <= convert to number*/
+
+console.log(null == 0)         /*false*/
