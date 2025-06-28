@@ -80,3 +80,5 @@ console.log(newdate.getDay())       // return current day no of present week
 newdate.toLocaleString('default',{
     weekday:"long"
 })
+
+
