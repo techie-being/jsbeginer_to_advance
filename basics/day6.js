@@ -104,9 +104,24 @@ console.log(Object.entries(user2))
 
 console.log(user2.hasOwnProperty('isloggedin'))   //false
 
+// destructuring object
+const course =  {
+    coursename:"javascript",
+    coursefees:"1999",
+    courseinstructor:"hitesh"
+}
 
+const{courseinstructor:instructor} = course
+// console.log(courseinstructor)    //hitesh
+console.log(instructor)             //hitesh
 
+// API
+// json(javascript object notation)
 
-
+/* {
+    "name": "rakesh",
+    "rollno": 5,
+    "subject": "cse"
+ }  */
 
 
