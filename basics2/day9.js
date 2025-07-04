@@ -51,7 +51,9 @@ Execution Phase
 Result is returned to where it was called (usually GEC)
 
 Function Execution Context is removed (popped from call stack)
-           or wencan 
+
+or we can say that
+
 🔁 Once function finishes:
 It returns a value (if any)
 
