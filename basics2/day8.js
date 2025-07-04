@@ -68,7 +68,7 @@ function chai(){
 }
 chai()
 
-// arrow function
+/* arrow function *****************/
 const arrow = () => {
     let username = "rakesh"
     console.log(this)                //returns a object(global)
