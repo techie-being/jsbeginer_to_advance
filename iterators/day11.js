@@ -220,19 +220,96 @@ const mycoding = [
 ]
 mycoding.forEach( (item) => {
     console.log(item.lang)
+    console.log(item.file)
 });
 
+// filter isa amethod that is used to return values which satisfies a condition
+
+const num1 = [1,2,3,4,56]
+const newnum = num1.filter((index) => (index>3))
+console.log(newnum);  //[ 4, 56 ]         //we use variable newnum to store return value by filter
+//here we use  paranthesis that why we have dont have to use explicit return keyword
+
+const num2 = [1,2,3,4,56]
+const newnum1 = num2.filter((index) => {  //here we use curly braces that why we have to use explicit return keyword
+    return index>3
+})
+console.log(newnum);           //[ 4, 56 ]
+
+const newnum2 = []
+num1.forEach( (num) => {          //num1 declared upper
+    if(num>4){
+        newnum2.push(num)
+    }
+})
+console.log(newnum2)             //[ 56 ]
+
+// question 
+const users = [
+  { name: "Rakesh", age: 22, birthYear: 2003 },
+  { name: "Priya", age: 17, birthYear: 2008 },
+  { name: "Aman", age: 19, birthYear: 2006 },
+  { name: "Neha", age: 16, birthYear: 2009 },
+  { name: "Vikram", age: 25, birthYear: 2000 }
+];
 
 
+let teen = users.filter( (a) => (a.age>18))
+console.log(teen)    
+/*
+[
+  { name: 'Rakesh', age: 22, birthYear: 2003 },
+  { name: 'Aman', age: 19, birthYear: 2006 },
+  { name: 'Vikram', age: 25, birthYear: 2000 }
+]
+*/
 
+teen = users.filter( (a) => (a.birthYear>2000))
+console.log(teen)
+/*
+[
+  { name: 'Rakesh', age: 22, birthYear: 2003 },
+  { name: 'Priya', age: 17, birthYear: 2008 },
+  { name: 'Aman', age: 19, birthYear: 2006 },
+  { name: 'Neha', age: 16, birthYear: 2009 }
+]
+*/
 
+// "map" is a method it is different from "Map" also return value so we have to store it in a variable
 
+// add 10 to every value of an array
+const r = [1,2,3,4,5,6,7,8,9,10]
+let res = r.map( (access) => access+10)
+console.log(res);   //[ 11, 12, 13, 14, 15, 16, 17,18, 19, 20 ]
 
+// chaining using map
+res = r
+.map( (acc) => acc*10)   //[10, 20, 30, 40,  50,60, 70, 80, 90, 100]
+.map( (acc) => acc+1)    //[11, 21, 31, 41,  51,61, 71, 81, 91, 101]
+.filter( (acc) => acc>60) //[ 61, 71, 81, 91, 101 ]
+console.log(res);
 
+// reduce this is practically used in shpping cart total calculation ex on flipkart
+let r1 = [1,2,3,4,5,6]
+let res2 = r1.reduce(function (acc,currval){
+    console.log(`acc;${acc} and currval:${currval}`);
+    return acc + currval
+},0)
+console.log(res2);
 
+// using arrow function
+res2 = r1.reduce( (acc,currval) => (acc+currval),0)
+console.log(res2)
 
-
-
+// question 
+const products = [
+  { name: "Laptop", price: 60000 },
+  { name: "Phone", price: 25000 },
+  { name: "Tablet", price: 15000 },
+  { name: "Smartwatch", price: 10000 }
+];
+const total = products.reduce( (acc,item) => (acc+item.price),0)
+console.log(`grand total: ${total}rs`);
 
 
 
