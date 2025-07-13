@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  
+  <title>DOM with chai aur code</title>
+
+</head>
+<body style="background-color:#212121; color:#fff;">
+  
+  <div class="parent">
+    <div class="day">Monday</div>
+    <div class="day">Tuesday</div>
+    <div class="day">wednesday</div>
+    <div class="day">thursday</div>
+  </div>
+   
+  <script>
+    const parent = document.querySelector('.parent')
+    console.log(parent) //div.parent
+
+    console.log(parent.children)  //HTMLCollection(4) [div.day, div.day, div.day, div.day]
+
+    console.log(parent.children[0].innerHTML)  //Monday
+    
+    for (let i = 0; i < parent.children.length; i++) {
+      console.log(parent.children[i].innerHTML);
+    }
+    //prints all div inner html
+
+    parent.children[0].style.color = "red" //cahnge monday color to red
+     
+    //alternate way to select element from html collection
+    console.log(parent.firstElementChild)
+    console.log(parent.lastElementChild.style.color = "blue")
+    
+    //select parent using parentElement
+    const dayone = document.querySelector('.day')
+    console.log(dayone)
+    console.log(dayone.nextSibling);
+    //text reason on  Nodes
+    console.log(dayone.previousSibling);
+    //text reson in NOdes
+    console.log(dayone.parentElement);
+    console.log(dayone.nextElementSibling);
+    console.log("nodes:",parent.childNodes)
+    //because dom is a tree structure every line break and comment and  every div is a tree.
+
+    //nodes: NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text] 
+    
+    //create element
+    const div = document.createElement('div')
+    console.log(div);  //div is created and we can create any tag using js with createElement.
+    div.className = "main"
+    div.id = Math.round(Math.random() * 10 + 1)
+    div.setAttribute("title","grerated")
+    div.style.backgroundColor = "red"
+    div.style.padding = "10px"
+    // div.innerText.color = "green"
+    const addtext = document.createTextNode("document object manipulation")
+    div.appendChild(addtext)
+    document.body.appendChild(div) //to insert div in to body screen
+  </script>
+
+  
+  
+</body>
+</html>
