@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dom with chai aur code</title>
+  
+</head>
+<body style="background-color:#212121; color:#fff;">
+    <ul class = "prolang">
+        <li>js</li>
+        <li>c++</li>
+        
+    </ul>
+
+  
+  <script>
+    //adding values
+    function addlanguage(language){
+        const li = document.createElement('li')
+        li.innerHTML = `${language}`
+        document.querySelector('.prolang').appendChild(li)
+    }
+    addlanguage("python by kirti mam")
+
+    //better way to add elements
+    function adoptlang(language){
+      const li = document.createElement('li')
+      li.appendChild(document.createTextNode(language))
+      document.querySelector('.prolang').appendChild(li)
+    }
+    adoptlang("c++")
+
+    //edit values
+    
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
