@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Colour switching</title>
+  </head>
+  <body>
+    <div class="main" style="background-color: #ffff">
+      <div id="box1"></div>
+      <div id="box2"></div>
+      <div id="box3"></div>
+      <div id="box4"></div>
+    </div>
+    <script>
+      /*
+        //my code
+        //main div definition
+        const div = document.querySelector('.main')
+        div.style.width="100vw"
+        div.style.height="100vh"
+        div.style.display = "flex"
+        div.style.alignItems = "center"
+        div.style.justifyContent = "center"
+        div.style.gap = "40px"
+        
+        
+        
+        //div1 definition
+        const div1 = document.querySelector('#box1')
+        div1.style.padding = "30px"
+        const c1 = div1.style.backgroundColor = "blue"
+        div1.style.borderRadius = "15px"
+        div1.style.border = "2px solid black"
+        
+        //div2 definition
+        const div2 = document.querySelector('#box2')
+        div2.style.padding = "30px"
+        const c2 = div2.style.backgroundColor = "red"
+        div2.style.borderRadius = "15px"
+        div2.style.border = "2px solid black"
+
+        //div3 definition
+        const div3 = document.querySelector('#box3')
+        div3.style.padding = "30px"
+        const c3 = div3.style.backgroundColor = "green"
+        div3.style.borderRadius = "15px"
+        div3.style.border = "2px solid black"
+        
+        //div4 definition
+        const div4 = document.querySelector('#box4')
+        div4.style.padding = "30px"
+        const c4 = div4.style.backgroundColor = "yellow"
+        div4.style.borderRadius = "15px"
+        div4.style.border = "2px solid black"
+       
+        //event on div1
+        const event1 = div1.addEventListener("click",function(tap){
+            div.style.backgroundColor=c1
+        })
+
+        //event on div2
+        const event2 = div2.addEventListener("click",function(tap){
+            div.style.backgroundColor=c2
+        })
+
+        //event on div3
+        const event3 = div3.addEventListener("click",function(tap){
+            div.style.backgroundColor=c3
+        })
+        
+        //event on div4
+        const event4 = div4.addEventListener("click",function(tap){
+            div.style.backgroundColor=c4
+        }) */
+
+        //gpt optimized code 
+      const main = document.querySelector(".main");
+      Object.assign(main.style, {
+        width: "100vw",
+        height: "100vh",
+        padding: "100px",
+        boxSizing: "border-box",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "40px",
+      });
+
+      // Box definitions: id and color
+      const boxes = [
+        { id: "box1", color: "blue" },
+        { id: "box2", color: "red" },
+        { id: "box3", color: "green" },
+        { id: "box4", color: "yellow" },
+      ];
+
+      // Apply styles and event listeners in one loop
+      boxes.forEach((box) => {
+        const el = document.getElementById(box.id);
+        Object.assign(el.style, {
+          padding: "30px",
+          backgroundColor: box.color,
+          borderRadius: "15px",
+          border: "2px solid black",
+          cursor: "pointer",
+        });
+
+        // Click event: change main background to box color
+        el.addEventListener("click", () => {
+          main.style.backgroundColor = box.color;
+        });
+      });
+    </script>
+  </body>
+</html>
