@@ -145,53 +145,52 @@ button.forEach(element => {
 
         if (id === "theme") {
             isDark = !isDark;
-        } else if (id === "t_format") {
+            body.style.backgroundColor = isDark ? "#121212" : "#F5F5F5";
+            body.style.color = isDark ? "#ffffff" : "#212121";
+
+            main.style.borderBottom = isDark ? "1px solid #BDBDBD" : "0px solid #BDBDBD";
+
+            //sets nav bar when event is triggred
+            nav.style.backgroundColor = isDark ? "#1E88E5" : "#1976D2";
+            nav.style.color = isDark ? "#FFEB3B" : "#ffffff";
+
+            //set clock bar when event is triggered
+            clock.style.backgroundColor = isDark ? "#1F1F1F" : "#ffffff";
+            clock.style.color = isDark ? "#ffffff" : "#000000";
+            clock.style.border = isDark ? "10px solid #444" : "10px solid #BDBDBD";
+
+            //changes timezone and date when event is triggered
+            dtext.style.color = isDark ? "#ffffff" : "#000000";
+            tztext.style.color = isDark ? "#ffffff" : "#000000";
+
+            // Chnages control div when event is occured 
+            control.style.backgroundColor = isDark ? "#1f1f1f" : "#ffffff";
+            control.style.border = isDark ? "10px solid #444" : "10px solid #1976D2";
+
+            // changed text of child paragraph of control div
+            const paragraphs = control.querySelectorAll('p');
+            paragraphs.forEach(p => {
+                p.style.color = isDark ? "#ffffff" : "#000000";
+            });
+
+            const btns = control.querySelectorAll('button');
+            btns.forEach(btn => {
+                btn.style.color = isDark ? "#ffffff" : "#000000";
+                btn.style.backgroundColor = isDark ? "#333333" : "#eeeeee";
+            });
+        }
+
+        else if (id === "t_format") {
             is24Hour = !is24Hour;
-        } else if (id === "dtoggle") {
+        }
+        else if (id === "dtoggle") {
             isDateVisible = !isDateVisible;
             dtext.style.display = isDateVisible ? "block" : "none";
             tztext.style.display = isDateVisible ? "block" : "none";
         }
 
-        // Set background and text color for body and main components
-        body.style.backgroundColor = isDark ? "#121212" : "#F5F5F5";
-        body.style.color = isDark ? "#ffffff" : "#212121";
-
-        main.style.borderBottom = isDark? "1px solid #BDBDBD":"0px solid #BDBDBD";
-        
-        //sets nav bar when event is triggred
-        nav.style.backgroundColor = isDark ? "#1E88E5" : "#1976D2";
-        nav.style.color = isDark ? "#FFEB3B" : "#ffffff";
-          
-        //set clock bar when event is triggered
-        clock.style.backgroundColor = isDark ? "#1F1F1F" : "#ffffff";
-        clock.style.color = isDark ? "#ffffff" : "#000000";
-        clock.style.border = isDark ? "10px solid #444" : "10px solid #BDBDBD";
-        
-        //changes timezone and date when event is triggered
-        dtext.style.color = isDark ? "#ffffff" : "#000000";
-        tztext.style.color = isDark ? "#ffffff" : "#000000";
-
-        // Chnages control div when event is occured 
-        control.style.backgroundColor = isDark ? "#1f1f1f" : "#ffffff";
-        control.style.border = isDark ? "10px solid #444" : "10px solid #1976D2";
-
-        // changed text of child paragraph of control div
-        const paragraphs = control.querySelectorAll('p');
-        paragraphs.forEach(p => {
-            p.style.color = isDark ? "#ffffff" : "#000000";
-        });
-
-        const btns = control.querySelectorAll('button');
-        btns.forEach(btn => {
-            btn.style.color = isDark ? "#ffffff" : "#000000";
-            btn.style.backgroundColor = isDark ? "#333333" : "#eeeeee";
-        });
     });
-
-
 });
-
 
 
 
