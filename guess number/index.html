@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUESS the NUMBER</title>
+</head>
+<!-- <link rel="stylesheet" href="index.css"> -->
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Open+Sans&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+<body>
+    <div id="main">
+        <div id="nav">Guess the Number</div>
+        <div id="guess-box">
+            <input type="number" id="guess" placeholder="Guess the Number :">
+        </div>
+        <div id="buttons">
+            <button id="check">Check</button>
+            <button id="restart">Restart</button>
+        </div> 
+        <div id="message"></div>
+        <audio id="success" src="sounds.mp3"></audio>
+        <audio id="fail" src="fail..wav"></audio>
+
+        <p id="attempts">Attempts:</p>
+        <script src="index.js"></script>
+    </div>
+</body>
+</html>
