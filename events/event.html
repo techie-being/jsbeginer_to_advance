@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>event</title>
+</head>
+
+<body style="background-color:pink">
+    <ul id="images">
+        <li id="a">
+            <img src="https://images.unsplash.com/photo-1555146185-67daf58a62a9?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MjB8MzE3NDU3MXx8ZW58MHx8fHx8"
+                alt="" style="width:20%;height:25%">
+        </li>
+        <li id="b">
+            <img src="https://images.unsplash.com/photo-1597873402677-d4a095792d2e?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwzMTc0NTcxfHxlbnwwfHx8fHw%3D"
+                alt="" style="width:20%;height:25%">
+        </li>
+        <li id="c">
+            <img src="https://images.unsplash.com/photo-1545229555-f8e4c81ac0a4?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTB8ODY0MDA4fHxlbnwwfHx8fHw%3D"
+                alt="" style="width:20%;height:25%">
+        </li>
+        <li id="d">
+            <img src="https://images.unsplash.com/photo-1535744236116-755512bf8b7f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTd8ODY0MDA4fHxlbnwwfHx8fHw%3D"
+                alt="" style="width:20%;height:25%">
+        </li>
+        <li id="google"><a href="https://www.google.com/">Google</a></li>
+    </ul>
+
+
+    <script>
+        // we can use "onclick" which is also act as a event listener
+        // but it would not give too much functionality
+        //j query framework before react
+        //"attachEvent" also act as eventlistener in few years ago
+        //"addEventListener" on img button div 
+        // const a = document.querySelector('#a')
+        a.addEventListener("click", () => {
+            // alert("owl")
+        }, false);
+
+        // event is a function in javascript main function of events are
+
+        // timestamp, defaultprevented, target
+        //toElement,srcElement, currentTarget,
+        //clientX, clientY,screenX, screenY,
+        //altkey, ctrlkey, shiftkey, keycode
+
+        //Event propagation:Event Propagation is the process that defines how events travel through the DOM (Document Object Model) tree when an event (like a click) occurs on a web page.
+
+        //1. event bubbling default behaviour "false" is used
+        //Event Bubbling: In event bubbling, the event starts from the target element and bubbles up to its parent elements. This means that the innermost element that was clicked will receive the event first, and then it will propagate up to its parent elements in the DOM tree.
+        const img = document.querySelector('#images')
+        img.addEventListener("click", () => {
+            console.log("parent div clicked")
+        }, false);
+
+        const b = document.querySelector('#b')
+        b.addEventListener("click", () => {
+            console.log("child div clicked")
+        }, false);
+
+        // output : child div clicked 
+        //         :parent div clicked
+
+        //2. Event Capturing: In event capturing, the event starts from the topmost element (the document) and travels down to the target element. This means that the outermost element will receive the event first, and then it will propagate down to its child elements.
+        //Event capturing is less commonly used than event bubbling, but it can be useful in certain scenarios where you want to handle events at a higher level before they reach the target element.
+        const i = document.querySelector('#images')
+        i.addEventListener("click", () => {
+            console.log("parent div clicked")
+        }, true);
+
+        const c = document.querySelector('#c')
+        c.addEventListener("click", () => {
+            console.log("child div clicked")
+
+        }, true);
+        // output : parent div clicked 
+        //         : child div clicked
+
+        // stop configuration
+        // stopPropagation: The stopPropagation() method is used to stop the event from propagating (bubbling or capturing) to parent elements. When this method is called, the event will not be passed to any other elements in the DOM tree.
+        const imagesElement = document.querySelector('#images')
+        imagesElement.addEventListener("click", () => {
+            console.log("parent div clicked")
+        });
+
+        const d = document.querySelector('#d')
+        d.addEventListener("click", (event) => {
+            console.log("child div clicked")
+            event.stopPropagation(); // Prevents the event from bubbling up to parent elements
+            // event.stopImmediatePropagation(); // Prevents other listeners of the same event from being called
+        })
+
+        // output : child div clicked
+
+        //preventDefault: The preventDefault() method is used to prevent the default action associated with the event from occurring. For example, if you have a link (<a>) and you call preventDefault() on its click event, the browser will not navigate to the link's URL.
+        document.getElementById("google").addEventListener("click", (event) => {
+            event.preventDefault(); // Prevents the default action of navigating to the link
+            console.log("Google link clicked, but navigation prevented.");
+        });
+
+
+        //mini application and behaviour of eventlistener
+        const s = document.querySelector('#images')
+        s.addEventListener("click", (event) => {
+            // console.log(event) //every time event ocuurs when clicked
+            // console.log(event.target)  //it targets a particular event
+            // console.log(event.target.parentNode)  // it targets the parent of targrt as we know dom is a tree  //it targets a particular event
+            console.log(event.target.tagName)    //it prints tagname of element when clicked
+            if (event.target.tagName === 'IMG') {
+                console.log(event.target.id)
+                const removeIt = event.target.parentNode  //selects the parent of img and execute event(remove li) when cclicked
+                removeIt.remove()
+            }
+        });
+
+        // another method
+        let removeIt = event.target.parentNode  //it selescts li
+        removeIt.parentNode.removeChild(removeIt)   //select li parent ul then removechild of ul means li
+
+        /*
+        🕒 timestamp
+        What it is: The time (in milliseconds) when the event occurred.
+        Use: Useful if you want to know how long a user has taken between two clicks or keypresses.
+        Example: You clicked a button at time 1651222012000.
+
+        ❌ defaultPrevented
+        What it is: Tells you if event.preventDefault() was called on the event.
+        Use: Checks whether the browser’s default action was stopped.
+        Example: If you click a link, but the developer used preventDefault(), the page won’t navigate.
+
+        🎯 target
+        What it is: The element where the event actually happened.
+        Example: If you click a button inside a div, event.target will be the button.
+
+        🧲 currentTarget
+        What it is: The element that the event listener is attached to.
+        Example: If a div listens for clicks and you click a child button inside it, currentTarget is the div, but target is the button.
+
+        📥 srcElement (mostly old IE)
+        Same as: target
+        Use: Older versions of Internet Explorer used this instead of target.
+
+        📤 toElement (mainly for mouseover/mouseout events)
+        What it is: The element the pointer is moving to.
+        Use: For example, when hovering from a button to a div, toElement is the div.
+
+       🖱 clientX and clientY
+        What it is: The position of your mouse within the visible browser window.
+        Example: (100, 200) from top-left of the browser window.
+        Use: Helpful for drawing or clicking games.
+
+       🖥 screenX and screenY
+       What it is: The position of your mouse relative to your full screen.
+       Use: Rarely used, but gives full-screen coordinates.
+
+       ⌨ altKey, ctrlKey, shiftKey
+       What it is: Tells whether Alt, Ctrl, or Shift key was pressed during the event.
+       Use: For shortcuts like Ctrl + S or Shift + Click.
+       Example: if (event.ctrlKey) { console.log("Ctrl pressed"); }
+
+       🔢 keyCode
+       What it is: A number representing the key you pressed on the keyboard.
+       Example: 65 is for 'A', 13 is for 'Enter'.
+       ⚠️ Note: It's deprecated. Use event.key instead (e.g., event.key === "A").
+
+       ✅ Summary Table
+       Property	Simple Meaning
+
+       timestamp:	        When the event happened
+       defaultPrevented:	Was browser’s default behavior stopped?
+       target:	            The exact element where event occurred
+       currentTarget:	    The element that has the event listener
+       toElement:	        Element you moved the mouse to
+       srcElement:	        Same as target (older IE)
+       clientX/Y:	        Mouse position inside browser window
+       screenX/Y:	        Mouse position relative to full screen
+       altKey/ctrlKey/shiftKey:	Was a modifier key pressed?
+       keyCode:          	Numeric code of pressed key (deprecated)
+        */
+    </script>
+
+</body>
+
+</html>

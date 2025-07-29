@@ -1,0 +1,68 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box
+}
+html,body{
+    width:100%;
+    height:100%;
+}
+/* Base styles (desktop) - assumed to be already defined */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  #nav {
+    font-size: 6vw;
+    text-align: center;
+  }
+
+  #guess {
+    width: 90vw;
+    font-size: 20px;
+  }
+
+  #buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #buttons button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  #message, #attempts {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+/* Mobile (phones) */
+@media (max-width: 480px) {
+  #nav {
+    font-size: 7vw;
+  }
+
+  #guess {
+    width: 80vw;
+    font-size: 18px;
+  }
+
+  #buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #buttons button {
+    margin: 8px 0;
+    width: 20vw;
+    height:3vw;
+  }
+
+  #message, #attempts {
+    font-size: 14px;
+  }
+}
+
