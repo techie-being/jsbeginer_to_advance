@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asynchronous code(interview prospective)</code></title>
+</head>
+
+<body>
+    🔄 What is Asynchronous Code in JavaScript?
+    JavaScript is single-threaded, meaning it can do one thing at a time. But thanks to asynchronous programming,
+    JavaScript can handle tasks like network requests, timers, or file I/O without blocking the main thread.
+
+    🧠 Key Concepts
+    **Callback**: A function passed as an argument to another function, which is executed after the first function
+    completes.
+
+    Synchronous: Code Executes line by line. Each step waits for the previous one to finish.
+
+    Asynchronous: Code Doesn’t wait. Starts a task and moves on. The result comes later via a callback, promise, or
+    async/await.
+
+    Event Loop: The system that handles async code in JS. It moves completed async tasks back into the call stack to be
+    executed.
+
+
+    <script>
+        console.log("Start");
+        setTimeout(() => {
+            console.log("Async task done");
+        }, 2000);
+
+        console.log("End");
+
+        Output:
+        Start
+        End
+        Async task done
+
+        
+    </script>
+
+            ┌────────────────────┐
+            │  JS Call Stack     │
+            └────────┬───────────┘
+                     │
+                     ▼
+          ┌──────────────────────┐
+          │  Web APIs / Node APIs│ <---- setTimeout, fetch, etc.
+          └────────┬─────────────┘
+                   │
+         ┌─────────▼─────────────┐
+         │  Callback / Task Queue│
+         └─────────┬─────────────┘
+                   │ (via Event Loop)
+                   ▼
+           ┌───────────────┐
+           │ Call Stack    │  <--- Executes callback now
+           └───────────────┘
+
+    <!-- broader view of  asyn programming  -->
+     <img src="https://sdmntprnortheu.oaiusercontent.com/files/00000000-1100-61f4-bb24-2d57c7de1798/raw?se=2025-07-29T07%3A59%3A54Z&sp=r&sv=2024-08-04&sr=b&scid=180e8c4b-5017-55c7-8d9e-4c42f49c9917&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-28T18%3A05%3A37Z&ske=2025-07-29T18%3A05%3A37Z&sks=b&skv=2024-08-04&sig=aBZG8NGcBuZIbTXeuVrMAE07s0evwrK7a4mY5/Ap09Q%3D" alt="">
+
+   
+</body>
+
+</html>
