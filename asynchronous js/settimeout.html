@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascynchronous javascript</title>
+</head>
+<body style=" background-color: black">
+    <h1 style="color:white">chai aur code</h1>
+    <button>stop</button>
+</body>
+<script>
+
+    //setTimeout is a function that allows you to execute code after a specified delay
+    //It takes two arguments/handler: a callback function and a delay/timeout in milliseconds
+    setTimeout(() => {
+        console.log("jai shree jaganath")
+    }, 2000);
+
+    // another way to use setTimeout
+    const change = function(){
+        document.querySelector('h1').innerHTML="jai shree vihhnaharta"
+    }
+    const namechange = setTimeout(change, 10000)
+    // it changes h1 chai aur code to jai shree vihhnaharta after 10 seconds
+
+    // clearTimeout is used to stop the execution of a timeout that has been set with setTimeout
+    // It takes one argument: the identifier of the timeout you want to cancel
+    document.querySelector('button').addEventListener('click',()=>{
+        console.log("button clicked")
+        // when the button is clicked, it will stop the execution of the timeout set for name
+        clearTimeout(namechange)
+    })
+    
+    //
+
+</script>
+</html>

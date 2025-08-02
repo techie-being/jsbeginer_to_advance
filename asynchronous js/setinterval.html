@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set interval</title>
+</head>
+<body style = "background-color: black;">
+    <h1 style="color:aliceblue">jai shree mahaprabhu jaganath</h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+</body>
+<script>
+    // setInterval is used to call a function repeatedly with a fixed time interval
+    // This function will be called every 2 seconds
+    //it asynchronously calls the function
+    //it cn take an third argument string or something like that
+    setInterval(function(){
+        console.log("jai jaganath")
+    },2000)
+
+    // another way to use setInterval
+    const f = ()=>{
+        console.log("jai shree kesari nandan")
+    }
+    const set = setInterval(f,10000)
+    //this prints "jai shree kesari nandan" every 10 seconds
+
+    // To stop the setInterval, we can use clearInterval
+    clearInterval(set)
+    // This will stop the interval set by the variable 'set'
+
+    
+    //task 1: Create a button that starts the interval and another button that stops it
+    const s = ()=>{
+        console.log("raeth jatra prarambha")
+    }
+
+    const startbutton = document.querySelector('#start')
+    const stopbutton = document.querySelector('#stop')
+    startbutton.addEventListener("click", ()=>{
+        console.log("setinterval intialized")
+        const st = setInterval(s,1000)
+        
+        stopbutton.addEventListener("click", () => {
+            console.log("stop button clicked!")
+            clearInterval(st)
+        })
+    })
+    
+    //
+    
+
+</script>
+</html>
