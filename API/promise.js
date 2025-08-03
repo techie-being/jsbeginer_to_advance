@@ -8,7 +8,7 @@
 
 //Creating a promise
 
-/*
+
 const promise1 = new Promise((resolve, reject) => {
     //do asyn task
     //db calls, cryptography, network calls, etc.
@@ -132,7 +132,7 @@ async function getallusers() {
 
 }
 getallusers()
-*/
+
 
 //using then catch
 fetch('https://randomuser.me/api/')
