@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color:black">
+    //ajax request using xml http request old but gold method in js
+
+    <script>
+        // how tosend an api request to get data from a server
+        const div = document.createElement('div')
+        div.style.width="250px";
+        div.style.height="250px";
+        div.style.backgroundColor="blue";
+        div.style.borderRadius="15px";
+        document.body.appendChild(div)
+
+        const button = document.createElement('button')
+        button.style.padding="20px 30px"
+        button.style.marginTop="10px"
+        document.body.appendChild(button)
+
+        const requesturl = 'https://api.github.com/users/techie-being';
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET',requesturl);
+        xhr.onreadystatechange = function(){
+            console.log(xhr.readyState);
+            if(xhr.readyState === 4){
+                const data = JSON.parse(xhr.responseText);
+                console.log(typeof data);
+                console.log(data.followers);
+                console.log(data.avatar_url);
+                const f = data.followers;
+                const img = data.avatar_url;
+
+                button.addEventListener('click',()=>{
+                    div.style.backgroundImage = `url(${img})`;
+                    div.style.backgroundSize = "cover";
+                    div.style.backgroundPosition = "center";
+                })
+            }
+        }
+        xhr.send();
+
+        
+
+    </script>
+</body>
+</html>
