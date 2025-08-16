@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure</title>
+</head>
+
+<body style="background-color: black;">
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+
+    <script>
+
+
+        //lexical scoping if a function is defined  inside a function(parent) then inner function(child) can acess the properties of outer function.
+        //to sibling function can acces to each property of parent function ,but parent cannot acces childs property and both siblings also cannot share/access their individual property.
+
+        function outer() {
+            // console.log(secret);    //parent function also do not have acces to its child property
+            let name = "rakesh"
+            function inner() {
+                let secret = "minica"
+                console.log("inner:", name)
+            }
+
+            inner()
+
+            function inner1() {
+                // console.log(secret);  //not have acces to use another child property
+                console.log("inner1", name);
+            }
+            inner1()
+        }
+        outer()
+        console.log("too outer", name);
+
+        //closure:A closure is formed when an inner function “remembers” variables from its outer function even after the outer function has finished executing.
+        function makeFunc() {
+            const name = "Mozilla";   // local variable (only inside makeFunc)
+
+            function displayName() {
+                console.log(name);    // inner function using outer variable
+            }
+
+            return displayName;       // returns the inner function
+        }
+
+        const myFunc = makeFunc();    // makeFunc finishes, but returns displayName
+        myFunc();                     // runs displayName -> still has access to "name"
+
+        
+        // task1 :when i click on button it changes background color
+        
+        // generally we do it like this but not good approch for multiple tasks
+        document.querySelector("#orange").addEventListener("click",()=>{
+            document.body.style.backgroundColor="orange";
+        })
+
+        document.querySelector("#green").addEventListener("click",()=>{
+            document.body.style.backgroundColor="green";
+        })
+        
+
+        //but we want to do it in a better way
+        function clickhandle(color){
+            return function(){
+                document.body.style.backgroundColor = `${color}`;
+            }
+        }
+
+        document.getElementById("orange").onclick = clickhandle("orange");
+        document.getElementById("green").onclick = clickhandle("green");
+        
+    </script>
+</body>
+
+</html>

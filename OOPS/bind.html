@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>clicked</button>
+    <script>
+        class react{
+            constructor(){
+                this.library  = "React";
+                this.server = "https://localhist:243005";
+                document.querySelector('button').addEventListener("click",this.handleclick.bind(this))                     
+            }
+            handleclick(){
+                console.log("buttonclicked");
+                console.log(this.server);
+            }
+        }
+        const app = new react()
+    </script>
+</body>
+</html>
+
+
+.bind(this) →
+Used when you pass a method as a callback (e.g., event listener, timer, async call) and still want this to refer to the current class instance (so you can access its properties inside DOM events, etc.).
+
+.call() →
+Used when you want to immediately call a function but set this to another object (method borrowing or manual context control).
